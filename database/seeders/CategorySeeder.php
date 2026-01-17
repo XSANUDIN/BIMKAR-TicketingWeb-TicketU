@@ -1,0 +1,23 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Category;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class CategorySeeder extends Seeder
+{
+    public function run(): void
+    {
+        $kategoris = [
+            ['nama_kategori' => 'Konser'],
+            ['nama_kategori' => 'Seminar'],
+            ['nama_kategori' => 'Workshop'],
+        ];
+
+        foreach ($kategoris as $kategori) {
+            Category::create(['nama' => $kategori['nama_kategori']]);
+        }
+    }
+}
