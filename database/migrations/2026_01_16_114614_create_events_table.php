@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('lokasi');
             $table->dateTime('tanggal_waktu');
             $table->string('gambar')->nullable();
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 
