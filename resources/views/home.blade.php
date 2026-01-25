@@ -1,64 +1,99 @@
 <x-layouts.app>
 
-    {{-- HERO CAROUSEL --}}
     <section class="relative">
-        <div id="heroCarousel" class="carousel w-full h-[500px] overflow-hidden">
+        <div id="heroCarousel" class="carousel w-full h-[500px] md:h-[600px] overflow-hidden text-white">
 
-            {{-- Slide 1 --}}
-            <div class="carousel-item relative w-full">
+            {{-- SLIDE 1 — Energetic (Orange / Pink) --}}
+            <div class="carousel-item relative w-full flex items-center
+                        bg-gradient-to-br from-orange-500 via-pink-500 to-rose-600">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="uppercase tracking-widest text-sm opacity-80">
+                        Trending Event
+                    </span>
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+                        Explore Amazing Events
+                    </h1>
+                    <p class="max-w-xl mb-6 text-lg opacity-90">
+                        Konser, seminar, workshop, dan pengalaman terbaik.
+                    </p>
+                    <a href="#event-section" class="btn btn-neutral btn-lg">
+                        Jelajahi Event
+                    </a>
+                </div>
+
+                {{--
                 <img
-                    src="https://awsimages.detik.net.id/community/media/visual/2023/08/25/the-sounds-project.jpeg?w=700&q=90"
-                    class="w-full h-full object-cover object-center"
+                    src="https://spotme.com/wp-content/uploads/2020/07/Hero-1.jpg"
+                    class="absolute inset-0 w-full h-full object-cover object-center -z-10"
                     loading="lazy"
                 />
-
-                {{-- Overlay --}}
-                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/20 flex items-center">
-                    <div class="max-w-7xl mx-auto px-6 text-white">
-                        <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-                            Explore Amazing Events
-                        </h1>
-                        <p class="max-w-xl mb-6 text-lg opacity-90">
-                            Konser, seminar, dan Kuliner dalam satu platform.
-                        </p>
-                        <a href="#event-section" class="btn btn-primary btn-lg">
-                            Jelajahi Event
-                        </a>
-                    </div>
-                </div>
+                --}}
             </div>
 
-            {{-- Slide 2 --}}
-            <div class="carousel-item relative w-full">
+            {{-- SLIDE 2 — Calm & Premium (Blue / Indigo) --}}
+            <div class="carousel-item relative w-full flex items-center
+                        bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="uppercase tracking-widest text-sm opacity-80">
+                        Limited Seat
+                    </span>
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+                        Book Your Seat Now
+                    </h1>
+                    <p class="max-w-xl mb-6 text-lg opacity-90">
+                        Jangan lewatkan event favoritmu.
+                    </p>
+                    <a href="#event-section" class="btn btn-neutral btn-lg text-white border-white">
+                        Lihat Event
+                    </a>
+                </div>
+
+                {{--
                 <img
-                    src="https://cdn1-production-images-kly.akamaized.net/jBfc2VwSXbv66n36ojbBct0yz9s=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4219033/original/024185100_1667903034-WhatsApp_Image_2022-11-01_at_8.35.53_PM.jpeg"
-                    class="w-full h-full object-cover"
+                    src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+                    class="absolute inset-0 w-full h-full object-cover object-center -z-10"
                     loading="lazy"
                 />
+                --}}
+            </div>
 
-                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/20 flex items-center">
-                    <div class="max-w-7xl mx-auto px-6 text-white">
-                        <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
-                            Book Your Seat Now
-                        </h1>
-                        <p class="max-w-xl mb-6 text-lg opacity-90">
-                            Jangan lewatkan event favoritmu.
-                        </p>
-                        <a href="#event-section" class="btn btn-secondary btn-lg">
-                            Lihat Event
-                        </a>
-                    </div>
+            {{-- SLIDE 3 — Fresh & Modern (Green / Teal) --}}
+            <div class="carousel-item relative w-full flex items-center
+                        bg-gradient-to-br from-emerald-500 via-teal-500 to-sky-500">
+                <div class="max-w-7xl mx-auto px-6">
+                    <span class="uppercase tracking-widest text-sm opacity-80">
+                        Pengalaman Baru
+                    </span>
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+                        Buat pengalaman tak terlupakan untuk
+                    </h1>
+                    <p class="max-w-xl mb-6 text-lg opacity-90">
+                        Event terbaik untuk setiap momen hidupmu.
+                    </p>
+                    <a href="#event-section" class="btn btn-accent btn-lg">
+                        Mulai Sekarang
+                    </a>
                 </div>
+
+                {{--
+                <img
+                    src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30"
+                    class="absolute inset-0 w-full h-full object-cover object-center -z-10"
+                    loading="lazy"
+                />
+                --}}
             </div>
 
         </div>
 
-        {{-- Navigation --}}
-        <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 flex justify-between">
-            <button onclick="prevSlide()" class="btn btn-circle glass">❮</button>
-            <button onclick="nextSlide()" class="btn btn-circle glass">❯</button>
+        {{-- NAVIGATION --}}
+        <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none">
+            <button onclick="prevSlide()" class="btn btn-circle glass pointer-events-auto">❮</button>
+            <button onclick="nextSlide()" class="btn btn-circle glass pointer-events-auto">❯</button>
         </div>
     </section>
+
+
 
     {{-- EVENT SECTION --}}
     <section id="event-section" class="max-w-7xl mx-auto py-16 px-6">
