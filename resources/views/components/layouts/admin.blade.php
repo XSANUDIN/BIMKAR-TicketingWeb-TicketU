@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-
 <body>
     <div class="drawer lg:drawer-open w-full min-h-screen bg-gray-50">
         <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
@@ -43,6 +42,5 @@
     {{-- Section untuk script tambahan --}}
     @stack('scripts')
 </body>
-    <linkhref="https://cdn.jsdelivr.net/npm/daisyui@5"rel="stylesheet" />
-    <scriptsrc="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </html>

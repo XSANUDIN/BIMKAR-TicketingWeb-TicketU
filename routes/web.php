@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
+use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HomeController;
@@ -22,6 +23,9 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         // Category Management
         Route::resource('categories', CategoryController::class);
 
+        // Category Management
+        Route::resource('payment-methods', PaymentMethodController::class);
+
         // Event Management
         Route::resource('events', EventController::class);
 
@@ -39,7 +43,6 @@ Route::get('/events/{event}', [UserEventController::class, 'show'])->name('event
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-
 
 
 Route::middleware('auth')->group(function () {

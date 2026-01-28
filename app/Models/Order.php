@@ -20,7 +20,6 @@ class Order extends Model
         'event_id',
         'order_date',
         'total_harga',
-        
     ];
 
     public function user(){

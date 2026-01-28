@@ -1,4 +1,4 @@
-<x-layouts.admin title="Manajemen Kategori">
+<x-layouts.admin title="Manajemen Metode Pembayaran">
    
     @if (session('success'))
         <div class="toast toast-bottom toast-center">
@@ -16,8 +16,8 @@
 
     <div class="container mx-auto p-10">
         <div class="flex">
-            <h1 class="text-3xl font-semibold mb-4">Manajemen Kategori</h1>
-            <button class="btn btn-primary ml-auto" onclick="add_modal.showModal()">Tambah Kategori</button>
+            <h1 class="text-3xl font-semibold mb-4">Manajemen Metode Pembayaran</h1>
+            <button class="btn btn-primary ml-auto" onclick="add_modal.showModal()">Tambah Metode Pembayaran</button>
         </div>
         <div class="overflow-x-auto rounded-box bg-white p-5 shadow-xs">
             <table class="table">
@@ -25,23 +25,23 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th class="w-3/4">Nama Kategori</th>
+                        <th class="w-3/4">Nama Metode Pembayaran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $index => $category)
+                    @forelse ($payments as $index => $payment)
                         <tr>
                             <th>{{ $index + 1 }}</th>
-                            <td>{{ $category->nama }}</td>
+                            <td>{{ $payment->tipe_pembayaran }}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary mr-2" onclick="openEditModal(this)" data-id="{{ $category->id }}" data-nama="{{ $category->nama }}">Edit</button>
-                                <button class="btn btn-sm bg-red-500 text-white" onclick="openDeleteModal(this)" data-id="{{ $category->id }}">Hapus</button>
+                                <button class="btn btn-sm btn-primary mr-2" onclick="openEditModal(this)" data-id="{{ $payment->id }}" data-nama="{{ $payment->tipe_pembayaran }}">Edit</button>
+                                <button class="btn btn-sm bg-red-500 text-white" onclick="openDeleteModal(this)" data-id="{{ $payment->id }}">Hapus</button>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="3" class="text-center">Tidak ada kategori tersedia.</td>
+                            <td colspan="3" class="text-center">Tidak ada metode pembayaran tersedia.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -51,14 +51,14 @@
 
     <!-- Add Category Modal -->
     <dialog id="add_modal" class="modal">
-        <form method="POST" action="{{ route('admin.categories.store') }}" class="modal-box">
+        <form method="POST" action="{{ route('admin.payment-methods.store') }}" class="modal-box">
             @csrf
-            <h3 class="text-lg font-bold mb-4">Tambah Kategori</h3>
+            <h3 class="text-lg font-bold mb-4">Tambah Metode Pembayaran</h3>
             <div class="form-control w-full mb-4">
                 <label class="label mb-2">
-                    <span class="label-text">Nama Kategori</span>
+                    <span class="label-text">Nama Metode Pembayaran</span>
                 </label>
-                <input type="text" placeholder="Masukkan nama kategori" class="input input-bordered w-full" name="nama" required />
+                <input type="text" placeholder="Masukkan Nama Metode Pembayaran" class="input input-bordered w-full" name="tipe_pembayaran" required />
             </div>
             <div class="modal-action">
                 <button class="btn btn-primary" type="submit">Simpan</button>
@@ -73,14 +73,14 @@
             @csrf
             @method('PUT')
 
-            <input type="hidden" name="category_id" id="edit_category_id">
+            <input type="hidden" name="edit_tipe_pembayaran" id="edit_tipe_pembayaran_id">
 
-            <h3 class="text-lg font-bold mb-4">Edit Kategori</h3>
+            <h3 class="text-lg font-bold mb-4">Edit Metode Pembayaran</h3>
             <div class="form-control w-full mb-4">
                 <label class="label mb-2">
-                    <span class="label-text">Nama Kategori</span>
+                    <span class="label-text">Nama Metode Pembayaran</span>
                 </label>
-                <input type="text" placeholder="Masukkan nama kategori" class="input input-bordered w-full" value="Kategori Contoh" id="edit_category_name" name="nama" />
+                <input type="text" placeholder="Masukkan nama Metode Pembayaran" class="input input-bordered w-full" value="Metode Pembayaran" id="edit_tipe_pembayaran" name="tipe_pembayaran" />
             </div>
             <div class="modal-action">
                 <button class="btn btn-primary" type="submit">Simpan</button>
@@ -95,10 +95,10 @@
             @csrf
             @method('DELETE')
 
-            <input type="hidden" name="category_id" id="delete_category_id">
+            <input type="hidden" name="tipe_pembayaran_id" id="delete_tipe_pembayaran_id">
 
-            <h3 class="text-lg font-bold mb-4">Hapus Kategori</h3>
-            <p>Apakah Anda yakin ingin menghapus kategori ini?</p>
+            <h3 class="text-lg font-bold mb-4">Hapus Metode Pembayaran</h3>
+            <p>Apakah Anda yakin ingin menghapus Metode Pembayaran ini?</p>
             <div class="modal-action">
                 <button class="btn btn-primary" type="submit">Hapus</button>
                 <button class="btn" onclick="delete_modal.close()" type="reset">Batal</button>
@@ -112,11 +112,11 @@
             const id = button.dataset.id;
             const form = document.querySelector('#edit_modal form');
             
-            document.getElementById("edit_category_name").value = name;
-            document.getElementById("edit_category_id").value = id;
+            document.getElementById("edit_tipe_pembayaran").value = name;
+            document.getElementById("edit_tipe_pembayaran_id").value = id;
 
              // Set action dengan parameter ID
-            form.action = `/admin/categories/${id}`
+            form.action = `/admin/payment-methods/${id}`
 
             edit_modal.showModal();
         }
@@ -124,10 +124,10 @@
         function openDeleteModal(button) {
             const id = button.dataset.id;
             const form = document.querySelector('#delete_modal form');
-            document.getElementById("delete_category_id").value = id;
+            document.getElementById("delete_tipe_pembayaran_id").value = id;
 
             // Set action dengan parameter ID
-            form.action = `/admin/categories/${id}`
+            form.action = `/admin/payment-methods/${id}`
 
             delete_modal.showModal();
         }

@@ -31,7 +31,6 @@ class OrderController extends Controller
   // store an order (AJAX POST)
   public function store(Request $request)
   {
-
     $data = $request->validate([
       'event_id' => 'required|exists:events,id',
       'items' => 'required|array|min:1',

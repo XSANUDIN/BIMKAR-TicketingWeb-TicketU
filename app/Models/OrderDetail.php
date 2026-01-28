@@ -24,4 +24,10 @@ class OrderDetail extends Model
     public function ticket(){
         return $this->belongsTo(Ticket::class);
     }
+
+    public function paymentMethod(){
+        return $this->belongsTo(Ticket::class);
+    }
+
+    
 }
